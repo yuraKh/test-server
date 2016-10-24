@@ -22,16 +22,14 @@ public class ServiceController {
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
     public List<Remind> getHello(ModelMap modelMap) {
+        createMocRemind();
         return repository.findAll();
-        //return createMocRemind();
     }
 
-    private Remind createMocRemind() {
+    private void createMocRemind() {
         Remind remind = new Remind();
-        // remind.setId(1L);
         remind.setRemindDate(new Date());
         remind.setTitle("vjdbujd");
         repository.save(remind);
-        return remind;
     }
 }
